@@ -1,4 +1,4 @@
-# Server to demonstate UDP communication
+# Server to demonstrate UDP communication
 import socket
 
 LOCAL_IP     = "127.0.0.1" # Server IP
