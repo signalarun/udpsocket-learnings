@@ -12,6 +12,7 @@
  server.on('message', (msg, senderInfo) => {
   console.log(chalk.yellow('Client : ' + msg));
   server.send(msgServer, senderInfo.port, senderInfo.address, ()=>{ console.log(chalk.green(`Message sent to ${senderInfo.address}:${senderInfo.port}`) )});
+  //sendContinousData(senderInfo); uncomment for sending data continously
  });
 
  server.on('error', (err) => {
@@ -25,3 +26,11 @@
  });
 
  server.bind(SERVER_PORT);
+
+/**
+ * Sending data continously to clients at mentioned interval
+ * @param {*} senderInfo 
+ */ 
+function sendContinousData(senderInfo){
+   setInterval(()=>{server.send(msgServer, senderInfo.port, senderInfo.address, ()=>{ console.log(chalk.green(`Message sent to ${senderInfo.address}:${senderInfo.port}`) )})},500);
+}
